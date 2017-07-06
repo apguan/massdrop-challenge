@@ -18,20 +18,42 @@ queue.on( 'error', function(err) {
 });
 
 var fetch = function(job, done) {
-
+  axios.get(job.data)
+  .then( function(response) {
+    client.hset(job.id, 'data', response.data, redis.print);
+    done();
+  });
 }
 
 var createJob = function(url, res) {
-
+  var job = queue.create('request', url).priority('high').removeOnComplete(true).save(function(err) {
+    if (err) {
+      res.send("There was an error creating your job");
+    }
+    else {
+      res.send("Your job ID is: " + job.id);
+      client.hset(job.id, 'data', 'none', redis.print);
+    }
+  });
 }
 
 var getStatus = function(id, res) {
-
+  client.hget(id, 'data', function(err, obj) {
+    if (err) {
+      res.send(err);
+    } else if (obj == null) {
+      res.send("This ID doesn\'t exist in the database");
+    } else if (obj == 'none') {
+      res.send("The job is still in progress");
+    } else {
+      res.send(obj);
+    }
+  });
 }
 
 queue.process('request', 3, function(job, done) {
 //second argument is the number of jobs that can happen concurrently. Smaller the task, the more that can run concurrently
-
+  fetch(job, done);
 });
 
 module.exports = {
