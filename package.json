@@ -1,0 +1,29 @@
+{
+  "name": "massdrop-challenge",
+  "version": "1.0.0",
+  "description": "massdrop's challenge to build a worker that processes a job queue",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apguan/massdrop-challenge.git"
+  },
+  "keywords": [
+    "mass-drop"
+  ],
+  "author": "Allen Guan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apguan/massdrop-challenge/issues"
+  },
+  "homepage": "https://github.com/apguan/massdrop-challenge#readme",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "express": "^4.15.2",
+    "kue": "^0.11.5",
+    "redis": "^2.7.1",
+    "valid-url": "^1.0.9"
+  }
+}
