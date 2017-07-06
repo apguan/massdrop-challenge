@@ -32,7 +32,7 @@ Once the redis server is running, run this in your terminal
 
 `npm run local`
 
-In your browser, go to `localhost://8000`
+In your browser, go to `localhost:8000`
 
 #####End points:
 `/create/your url`
