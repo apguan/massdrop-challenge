@@ -8,11 +8,12 @@ var checkStatus = function (req, res) {
 var createUrl = function (req, res) {
   var url = 'http://' + req.params['url'];
   console.log(req.params)
-  if (validUrl.isUri(url)) {
+  //isWebUri is just a convenience method that combines isHttpUri and isHttpsUri to accept most common real-world URLs.
+  if (validUrl.isWebUri(url)) {
     console.log(url);
-    // res.send(url)
     createJob(url, res);
   } else {
+    console.log('invalid URL');
     res.send('invalid URL format. Ex: \'www.facebook.com\'');
   }
 }

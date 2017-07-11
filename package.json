@@ -4,7 +4,8 @@
   "description": "massdrop's challenge to build a worker that processes a job queue",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local": "node server.js"
   },
   "repository": {
     "type": "git",

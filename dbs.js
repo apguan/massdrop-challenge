@@ -26,7 +26,7 @@ var fetch = function(job, done) {
 }
 
 var createJob = function(url, res) {
-  var job = queue.create('request', url).priority('high').removeOnComplete(true).save(function(err) {
+  var job = queue.create('request', url).priority('high').attempts(3).removeOnComplete(true).save(function(err) {
     if (err) {
       res.send("There was an error creating your job");
     }
