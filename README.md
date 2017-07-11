@@ -28,6 +28,10 @@ Make sure Node is installed on your machine. To install, run
 
 `brew install node`
 
+Install Node dependencies
+
+`npm install`
+
 Once the redis server is running, run this in your terminal
 
 `npm run local`
