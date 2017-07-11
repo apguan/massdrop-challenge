@@ -19,9 +19,12 @@ queue.on( 'error', function(err) {
 
 var fetch = function(job, done) {
   axios.get(job.data)
-  .then( function(response) {
+  .then(function(response) {
     client.hset(job.id, 'data', response.data, redis.print);
     done();
+  })
+  .catch(function() {
+    console.log('fetch not complete')
   });
 }
 
